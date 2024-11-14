@@ -1,11 +1,17 @@
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Button } from '../components/Button/button'
 
 
 
 export default function index() {
+
+  function handlePressButton(){
+    router.replace('./home');
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Image
@@ -13,12 +19,15 @@ export default function index() {
       resizeMode='center'
       style={styles.logo}/>
 
-      <View style={styles.tituloContainer}>
-        <Text style={[styles.titulo, styles.destaque]}>Lucky</Text>
-        <Text style={styles.titulo}>Store</Text>
-      </View>
+      <View style={styles.buttonAreaContainer}>
+        <View style={styles.tituloContainer}>
+          <Text style={[styles.titulo, styles.destaque]}>Lucky</Text>
+          <Text style={styles.titulo}>Store</Text>
+        </View>
 
-      <Text style={styles.text}>Loja da sorte!!!</Text>
+        <Text style={styles.text}>Loja da sorte!!!</Text>
+        <Button text="Começar as Compras" function={handlePressButton}></Button>
+      </View>
 
       
 
@@ -49,6 +58,11 @@ const styles = StyleSheet.create({
   },
   destaque:{
     color:"#E67A31"
+  },
+  buttonAreaContainer:{
+    gap:16,
+    justifyContent:'center',
+    alignItems:'center'
   }
-})
+});
 
